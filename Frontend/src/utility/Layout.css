@@ -1,0 +1,14 @@
+@media (max-width:50%){
+    .search{
+        width:100px;
+    }
+}
+.footer1 p{
+    color: white;
+}
+@media(max-width:800px){
+    .footer{
+        display: flex;
+        flex-direction: column;
+    }
+}
