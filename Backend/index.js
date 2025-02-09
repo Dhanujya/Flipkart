@@ -3,10 +3,13 @@ import UserRouter from "./routes/UserRouter.js";
 import  dotenv  from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import ProductRouter from "./routes/ProductsRouter.js";
+import cartRouter from "./routes/cartRouter.js";
 const app=express();
 dotenv.config();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(express.static("public"));
 app.use(cors());
 const dbUrl=process.env.MONGO_URL;
 const PORT = process.env.PORT || 5000;
@@ -20,6 +23,8 @@ app.get("/",(req,res)=>{
     res.send("Backend is connected");
 })
 app.use(UserRouter);
+app.use(ProductRouter);
+app.use(cartRouter)
 async function main(){
     await mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true})
 }

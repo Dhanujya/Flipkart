@@ -23,6 +23,7 @@ const Login= () => {
           password:pass
       })
       if(response.status==200){
+        localStorage.setItem('user',JSON.stringify({username:response.data.loguser.username,id:response.data.loguser.id}))
         navigate("/");
       };
       console.log(response);
@@ -99,6 +100,9 @@ const Login= () => {
               >
                 Login
               </button><br></br>
+              <p className="mt-7 text-center text-sm/6 text-gray-500">
+                <a className="font-semibold text-blue-600 hover:text-blue-500" onClick={()=>navigate("/forgotpass")}>Forgot Password</a>
+              </p>
               <p className="mt-7 text-center text-sm/6 text-gray-500">
                 Don't have an account 
                 <a className="font-semibold text-blue-600 hover:text-blue-500" onClick={()=>navigate("/signup")}>Signup</a>
