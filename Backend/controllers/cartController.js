@@ -23,11 +23,33 @@ export const cartController=async(req,res)=>{
         console.log(addCart);
         await addCart.save();
         console.log(addCart);
-        return res.status(200).json({message:"Added to Cart"});
+        return res.status(200).json({message:"Added to Cart",addCart});
 
 
     }
     catch(err){
         return res.status(404).json({message:"404 Error",err})
+    }
+}
+export const FetchData=async(req,res)=>{
+    try{
+        const CartDatas= await Cart.find({});
+        return res.status(200).json({message:"Data Fetched Sucessfully",CartDatas});
+    }catch(err){
+        console.log(err);
+        return res.status(404).json({message:"Data not found",err});
+    }
+}
+
+  
+export const Deletecart=async(req,res)=>{
+    try{
+        const {id}=req.params;
+        await Cart.findByIdAndDelete(id);
+        return res.status(200).json({message:"Deleted successfully"})
+
+    }
+    catch(err){
+        res.status(404).json({message:"404 Error occured"});
     }
 }

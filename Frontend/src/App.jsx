@@ -10,6 +10,7 @@ import IndividualProduct from './products/IndividualProduct';
 import IndividualItem from './products/IndividualItem';
 import Forgotpass from './screens/Forgotpass';
 import Updatepass from './screens/Updatepass';
+import Cart from './products/Cart';
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/forgotpass" element={<Forgotpass/>}></Route>
         <Route path='/updatepass' element={<Updatepass/>}></Route>
         <Route path='/product/:component/:title' element={<IndividualItem></IndividualItem>}></Route>
+        <Route path='/cart' element={<Cart/>}></Route>
         </Route>
         <Route path="*" element={<h1 className='text-center '>404 Page Not Found</h1>}></Route>
       </Routes>

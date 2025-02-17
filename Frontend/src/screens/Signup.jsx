@@ -30,7 +30,7 @@ const Signup = () => {
       });
       // alert(response.data.message); 
       if(response.status==200){
-        navigate("/");
+        navigate("/login");
       }
     }  catch (error) {
       if (error.response) {

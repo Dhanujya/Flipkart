@@ -33,6 +33,15 @@ const Navbar = () => {
       navigate("/login");
     }
   }
+  const handlecart=()=>{
+      if(localStorage.getItem('user')){
+        navigate('/cart');
+      }
+      else{
+        alert("Do Login ");
+        navigate("/login");
+      }
+  }
   return (
     <div className='navbar-container flex w-full h-[100px] items-center justify-between bg-white'>
       {/* Logo */}
@@ -68,7 +77,7 @@ const Navbar = () => {
       </div>
 
       {/* Cart Icon */}
-      <div className="flex items-center space-x-2 cursor-pointer">
+      <div className="flex items-center space-x-2 cursor-pointer" onClick={handlecart}>
         <FaShoppingCart className="text-gray-700" />
         <span className="text-gray-700">Cart</span>
       </div>

@@ -2,10 +2,36 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { LuIndianRupee } from "react-icons/lu";
+import axios from 'axios';
 
 const IndividualItem = () => {
 const location=useLocation();
 const product=location.state
+const handlecart=async(product)=>{
+  try{
+    console.log(product._id);
+    if(localStorage.getItem("user")){
+      const res=await axios.post(`http://localhost:5000/cart/${product._id}`);
+      console.log(res);
+      // SetcartProd((prevItems)=>[...prevItems,res.data.newCart]);
+      alert(res.data.message);
+      navigate("/cart");
+      // ToastNotification("success",res.data.message);
+      // setCartCount(prevCount => prevCount + 1);
+    }else{
+      alert("You must be LoggedIn to add into the cart!!");
+      // ToastNotification("error","You must be LoggedIn to add into the cart!!");
+      navigate("/login");
+    }
+
+  }catch(err){
+    // alert(err.response?.data.message);
+    // ToastNotification("error",err.response?.data.message);
+    console.log(err);
+  }
+
+ }
+ if (!product) return <div>Loading...</div>;
 const getStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -47,7 +73,8 @@ const getStars = (rating) => {
               </div>
                
              <div className="mt-1 p-2 mx-2 mb-2">
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg">
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg"
+              onClick={()=>handlecart(product)}>
                 Add to Cart
             </button>
             </div>
