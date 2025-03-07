@@ -12,6 +12,7 @@ const Cart = () => {
     const fetchDataFromCart = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/cart`);
+        // let userid=res.User._id;
         console.log(res.data);
         setCartData(res.data.CartDatas);
 
@@ -123,7 +124,7 @@ const Cart = () => {
             </div>
           </div>
 
-          <button className="w-full mt-6 py-3 bg-blue-600 text-white rounded-lg font-bold text-lg shadow-md hover:bg-blue-700">
+          <button className="w-full mt-6 py-3 bg-blue-600 text-white rounded-lg font-bold text-lg shadow-md hover:bg-blue-700" onClick={()=>navigate("/payment",{state:{amount:total}})} >
             Proceed to Checkout
           </button>
         </div>

@@ -11,6 +11,7 @@ import IndividualItem from './products/IndividualItem';
 import Forgotpass from './screens/Forgotpass';
 import Updatepass from './screens/Updatepass';
 import Cart from './products/Cart';
+import Payment from './products/Payemt';
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/product/:component" element={<IndividualProduct/>}></Route>
         <Route path="/forgotpass" element={<Forgotpass/>}></Route>
         <Route path='/updatepass' element={<Updatepass/>}></Route>
+        <Route path='/payment' element={<Payment/>}></Route>
         <Route path='/product/:component/:title' element={<IndividualItem></IndividualItem>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
         </Route>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { LuIndianRupee } from "react-icons/lu";
 import axios from 'axios';
@@ -7,6 +7,7 @@ import axios from 'axios';
 const IndividualItem = () => {
 const location=useLocation();
 const product=location.state
+const navigate=useNavigate();
 const handlecart=async(product)=>{
   try{
     console.log(product._id);
